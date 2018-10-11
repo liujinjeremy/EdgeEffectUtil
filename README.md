@@ -1,5 +1,28 @@
 ## 辅助制造EdgeEffect效果
 
+### 引入
+
+**Step 1.** Add the JitPack repository to your build file
+
+Add it in your root build.gradle at the end of repositories:
+
+```
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+**Step 2.** Add the dependency
+
+```
+	dependencies {
+	        implementation 'com.github.threekilogram:EdgeEffectUtil:1.0.0'
+	}
+```
+
 ### 使用
 
 * 创建
@@ -64,4 +87,3 @@ public boolean onTouchEvent ( MotionEvent event ) {
 ## 效果
 
 ![](img/pic00.gif)
-
