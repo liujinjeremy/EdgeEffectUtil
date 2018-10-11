@@ -1,8 +1,8 @@
 package tech.threekilogram.edgeeffect;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
+import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
@@ -42,11 +42,9 @@ public class EdgeEffectUtil {
 
       /**
        * @param view 需要效果的view
-       * @param width 效果宽度
-       * @param height 效果高度
        */
       @SuppressWarnings("SuspiciousNameCombination")
-      public EdgeEffectUtil ( View view, int width, int height ) {
+      public EdgeEffectUtil ( View view ) {
 
             Context context = view.getContext();
 
@@ -54,6 +52,23 @@ public class EdgeEffectUtil {
             mBottomEffect = new EdgeEffect( context );
             mLeftEffect = new EdgeEffect( context );
             mRightEffect = new EdgeEffect( context );
+
+            mView = view;
+      }
+
+      /**
+       * @param view 需要效果的view
+       * @param width 效果宽度
+       * @param height 效果高度
+       */
+      @SuppressWarnings("SuspiciousNameCombination")
+      public EdgeEffectUtil ( View view, int width, int height ) {
+
+            this( view );
+            setSize( width, height );
+      }
+
+      public void setSize ( int width, int height ) {
 
             /* 设置效果范围 */
             mTopEffect.setSize( width, height );
@@ -63,8 +78,6 @@ public class EdgeEffectUtil {
 
             mWidth = width;
             mHeight = height;
-
-            mView = view;
       }
 
       /**
@@ -210,12 +223,13 @@ public class EdgeEffectUtil {
       /**
        * 设置颜色
        */
-      @TargetApi(VERSION_CODES.LOLLIPOP)
       public void setColor ( @ColorInt int color ) {
 
-            mLeftEffect.setColor( color );
-            mTopEffect.setColor( color );
-            mRightEffect.setColor( color );
-            mBottomEffect.setColor( color );
+            if( VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP ) {
+                  mLeftEffect.setColor( color );
+                  mTopEffect.setColor( color );
+                  mRightEffect.setColor( color );
+                  mBottomEffect.setColor( color );
+            }
       }
 }
