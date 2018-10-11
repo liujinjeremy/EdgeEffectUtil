@@ -125,14 +125,30 @@ public class EdgeEffectUtil {
        * 回弹
        */
       public void release ( ) {
+
+            boolean call = false;
             /* 回弹 */
-            mTopEffect.onRelease();
-            mBottomEffect.onRelease();
-            mLeftEffect.onRelease();
-            mRightEffect.onRelease();
+            if( !mTopEffect.isFinished() ) {
+                  mTopEffect.onRelease();
+                  call = true;
+            }
+            if( !mBottomEffect.isFinished() ) {
+                  mBottomEffect.onRelease();
+                  call = true;
+            }
+            if( !mLeftEffect.isFinished() ) {
+                  mLeftEffect.onRelease();
+                  call = true;
+            }
+            if( !mRightEffect.isFinished() ) {
+                  mRightEffect.onRelease();
+                  call = true;
+            }
             isReleased = true;
             /* 触发重绘 */
-            mView.invalidate();
+            if( call ) {
+                  mView.invalidate();
+            }
       }
 
       /**
