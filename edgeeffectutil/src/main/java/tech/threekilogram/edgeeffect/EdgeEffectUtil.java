@@ -1,13 +1,11 @@
 package tech.threekilogram.edgeeffect;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
-import android.support.annotation.RequiresApi;
 import android.support.v4.widget.EdgeEffectCompat;
 import android.view.View;
 import android.widget.EdgeEffect;
@@ -57,18 +55,6 @@ public class EdgeEffectUtil {
             mRightEffect = new EdgeEffect( context );
 
             mView = view;
-      }
-
-      /**
-       * @param view 需要效果的view
-       * @param width 效果宽度
-       * @param height 效果高度
-       */
-      @SuppressWarnings("SuspiciousNameCombination")
-      public EdgeEffectUtil ( View view, int width, int height ) {
-
-            this( view );
-            setSize( width, height );
       }
 
       @SuppressWarnings("SuspiciousNameCombination")
@@ -228,7 +214,6 @@ public class EdgeEffectUtil {
        *
        * @param deltaDistanceX 0时没有效果,1时满效果
        */
-      @TargetApi(VERSION_CODES.LOLLIPOP)
       public void pullLeft (
           @FloatRange(from = 0, to = 1) float deltaDistanceX,
           @FloatRange(from = 0, to = 1) float displacement ) {
@@ -253,7 +238,6 @@ public class EdgeEffectUtil {
        *
        * @param deltaDistanceY 0时没有效果,1时满效果
        */
-      @RequiresApi(api = VERSION_CODES.LOLLIPOP)
       public void pullTop (
           @FloatRange(from = 0, to = 1) float deltaDistanceY,
           @FloatRange(from = 0, to = 1) float displacement ) {
@@ -278,7 +262,6 @@ public class EdgeEffectUtil {
        *
        * @param deltaDistanceX 0时没有效果,1时满效果
        */
-      @RequiresApi(api = VERSION_CODES.LOLLIPOP)
       public void pullRight (
           @FloatRange(from = 0, to = 1) float deltaDistanceX,
           @FloatRange(from = 0, to = 1) float displacement ) {

@@ -41,7 +41,8 @@ public class EdgeFrameLayout extends FrameLayout {
       protected void onSizeChanged ( int w, int h, int oldw, int oldh ) {
 
             super.onSizeChanged( w, h, oldw, oldh );
-            mEffectUtil = new EdgeEffectUtil( this, w, h );
+            mEffectUtil = new EdgeEffectUtil( this );
+            mEffectUtil.setSize( w, h );
       }
 
       @Override
