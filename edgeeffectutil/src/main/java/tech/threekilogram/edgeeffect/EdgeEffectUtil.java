@@ -1,11 +1,14 @@
 package tech.threekilogram.edgeeffect;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.os.Build.VERSION;
 import android.os.Build.VERSION_CODES;
 import android.support.annotation.ColorInt;
 import android.support.annotation.FloatRange;
+import android.support.annotation.RequiresApi;
+import android.support.v4.widget.EdgeEffectCompat;
 import android.view.View;
 import android.widget.EdgeEffect;
 
@@ -221,6 +224,20 @@ public class EdgeEffectUtil {
       }
 
       /**
+       * 在需要左边效果的时候调用
+       *
+       * @param deltaDistanceX 0时没有效果,1时满效果
+       */
+      @TargetApi(VERSION_CODES.LOLLIPOP)
+      public void pullLeft (
+          @FloatRange(from = 0, to = 1) float deltaDistanceX,
+          @FloatRange(from = 0, to = 1) float displacement ) {
+
+            EdgeEffectCompat.onPull( mBottomEffect, deltaDistanceX, displacement );
+            mView.invalidate();
+      }
+
+      /**
        * 在需要上边效果的时候调用
        *
        * @param deltaDistanceY 0时没有效果,1时满效果
@@ -228,6 +245,20 @@ public class EdgeEffectUtil {
       public void pullTop ( @FloatRange(from = 0, to = 1) float deltaDistanceY ) {
 
             mTopEffect.onPull( deltaDistanceY );
+            mView.invalidate();
+      }
+
+      /**
+       * 在需要上边效果的时候调用
+       *
+       * @param deltaDistanceY 0时没有效果,1时满效果
+       */
+      @RequiresApi(api = VERSION_CODES.LOLLIPOP)
+      public void pullTop (
+          @FloatRange(from = 0, to = 1) float deltaDistanceY,
+          @FloatRange(from = 0, to = 1) float displacement ) {
+
+            EdgeEffectCompat.onPull( mTopEffect, deltaDistanceY, displacement );
             mView.invalidate();
       }
 
@@ -243,6 +274,20 @@ public class EdgeEffectUtil {
       }
 
       /**
+       * 在需要右边效果的时候调用
+       *
+       * @param deltaDistanceX 0时没有效果,1时满效果
+       */
+      @RequiresApi(api = VERSION_CODES.LOLLIPOP)
+      public void pullRight (
+          @FloatRange(from = 0, to = 1) float deltaDistanceX,
+          @FloatRange(from = 0, to = 1) float displacement ) {
+
+            EdgeEffectCompat.onPull( mRightEffect, deltaDistanceX, displacement );
+            mView.invalidate();
+      }
+
+      /**
        * 在需要下边效果的时候调用
        *
        * @param deltaDistanceY 0时没有效果,1时满效果
@@ -250,6 +295,19 @@ public class EdgeEffectUtil {
       public void pullBottom ( @FloatRange(from = 0, to = 1) float deltaDistanceY ) {
 
             mBottomEffect.onPull( deltaDistanceY );
+            mView.invalidate();
+      }
+
+      /**
+       * 在需要下边效果的时候调用
+       *
+       * @param deltaDistanceY 0时没有效果,1时满效果
+       */
+      public void pullBottom (
+          @FloatRange(from = 0, to = 1) float deltaDistanceY,
+          @FloatRange(from = 0, to = 1) float displacement ) {
+
+            EdgeEffectCompat.onPull( mBottomEffect, deltaDistanceY, displacement );
             mView.invalidate();
       }
 
