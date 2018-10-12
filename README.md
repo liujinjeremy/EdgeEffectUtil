@@ -19,7 +19,7 @@ Add it in your root build.gradle at the end of repositories:
 
 ```
 	dependencies {
-	        implementation 'com.github.threekilogram:EdgeEffectUtil:1.0.2'
+	        implementation 'com.github.threekilogram:EdgeEffectUtil:1.0.3'
 	}
 ```
 
