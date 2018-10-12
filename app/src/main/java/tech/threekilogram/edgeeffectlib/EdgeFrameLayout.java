@@ -88,7 +88,7 @@ public class EdgeFrameLayout extends FrameLayout {
                         break;
                   default:
                         /* 及时释放回弹 */
-                        mEffectUtil.release();
+                        mEffectUtil.releaseAllEdge();
                         break;
             }
 

@@ -68,6 +68,7 @@ public class EdgeEffectUtil {
             setSize( width, height );
       }
 
+      @SuppressWarnings("SuspiciousNameCombination")
       public void setSize ( int width, int height ) {
 
             /* 设置效果范围 */
@@ -137,7 +138,7 @@ public class EdgeEffectUtil {
       /**
        * 回弹
        */
-      public void release ( ) {
+      public void releaseAllEdge ( ) {
 
             boolean call = false;
             /* 回弹 */
@@ -160,6 +161,38 @@ public class EdgeEffectUtil {
             isReleased = true;
             /* 触发重绘 */
             if( call ) {
+                  mView.invalidate();
+            }
+      }
+
+      public void releaseLeft ( ) {
+
+            if( !mLeftEffect.isFinished() ) {
+                  mLeftEffect.onRelease();
+                  mView.invalidate();
+            }
+      }
+
+      public void releaseTop ( ) {
+
+            if( !mTopEffect.isFinished() ) {
+                  mTopEffect.onRelease();
+                  mView.invalidate();
+            }
+      }
+
+      public void releaseRight ( ) {
+
+            if( !mRightEffect.isFinished() ) {
+                  mRightEffect.onRelease();
+                  mView.invalidate();
+            }
+      }
+
+      public void releaseBottom ( ) {
+
+            if( !mBottomEffect.isFinished() ) {
+                  mBottomEffect.onRelease();
                   mView.invalidate();
             }
       }
