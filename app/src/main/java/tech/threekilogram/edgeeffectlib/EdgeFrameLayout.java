@@ -7,7 +7,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
+import tech.threekilogram.edgeeffect.BaseEdgeEffect;
+import tech.threekilogram.edgeeffect.BottomEffect;
 import tech.threekilogram.edgeeffect.EdgeEffectUtil;
+import tech.threekilogram.edgeeffect.LeftEffect;
+import tech.threekilogram.edgeeffect.RightEffect;
+import tech.threekilogram.edgeeffect.TopEffect;
 
 /**
  * @author Liujin 2018-10-11:9:56
@@ -15,6 +20,10 @@ import tech.threekilogram.edgeeffect.EdgeEffectUtil;
 public class EdgeFrameLayout extends FrameLayout {
 
       private EdgeEffectUtil mEffectUtil;
+      private BaseEdgeEffect mLeftEffect;
+      private BaseEdgeEffect mTopEffect;
+      private BaseEdgeEffect mRightEffect;
+      private BaseEdgeEffect mBottomEffect;
 
       private float mDownX;
       private float mDownY;
@@ -43,6 +52,18 @@ public class EdgeFrameLayout extends FrameLayout {
             super.onSizeChanged( w, h, oldw, oldh );
             mEffectUtil = new EdgeEffectUtil( this );
             mEffectUtil.setSize( w, h );
+
+            mLeftEffect = new LeftEffect( this );
+            mLeftEffect.setSize( w, h );
+
+            mTopEffect = new TopEffect( this );
+            mTopEffect.setSize( w, h );
+
+            mRightEffect = new RightEffect( this );
+            mRightEffect.setSize( w, h );
+
+            mBottomEffect = new BottomEffect( this );
+            mBottomEffect.setSize( w, h );
       }
 
       @Override
@@ -51,6 +72,10 @@ public class EdgeFrameLayout extends FrameLayout {
             super.onDraw( canvas );
             /* 绘制效果 */
             mEffectUtil.onDraw( canvas );
+            mLeftEffect.onDraw( canvas );
+            mTopEffect.onDraw( canvas );
+            mRightEffect.onDraw( canvas );
+            mBottomEffect.onDraw( canvas );
       }
 
       @Override
@@ -73,23 +98,31 @@ public class EdgeFrameLayout extends FrameLayout {
                         if( Math.abs( dx ) >= Math.abs( dy ) ) {
 
                               if( deltaDistanceX > 0 ) {
-                                    mEffectUtil.pullLeft( deltaDistanceX );
+                                    //mEffectUtil.pullLeft( deltaDistanceX );
+                                    mLeftEffect.pull( deltaDistanceX );
                               } else {
-                                    mEffectUtil.pullRight( deltaDistanceX );
+                                    //mEffectUtil.pullRight( deltaDistanceX );
+                                    mRightEffect.pull( deltaDistanceX );
                               }
                         } else {
                               if( deltaDistanceY > 0 ) {
 
-                                    mEffectUtil.pullTop( deltaDistanceY );
+                                    //mEffectUtil.pullTop( deltaDistanceY );
+                                    mTopEffect.pull( deltaDistanceY );
                               } else {
-                                    mEffectUtil.pullBottom( deltaDistanceY );
+                                    //mEffectUtil.pullBottom( deltaDistanceY );
+                                    mBottomEffect.pull( deltaDistanceY );
                               }
                         }
 
                         break;
                   default:
                         /* 及时释放回弹 */
-                        mEffectUtil.releaseAllEdge();
+                        //mEffectUtil.releaseAllEdge();
+                        mLeftEffect.release();
+                        mTopEffect.release();
+                        mRightEffect.release();
+                        mBottomEffect.release();
                         break;
             }
 

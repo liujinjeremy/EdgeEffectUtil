@@ -114,10 +114,6 @@ public class EdgeEffectUtil {
                   }
                   if( isInvalidate ) {
                         mView.invalidate();
-                  }
-
-                  if( isInvalidate ) {
-                        mView.invalidate();
                   } else {
                         isReleased = false;
                   }
@@ -159,6 +155,7 @@ public class EdgeEffectUtil {
             if( !mLeftEffect.isFinished() ) {
                   mLeftEffect.onRelease();
                   mView.invalidate();
+                  isReleased = true;
             }
       }
 
@@ -167,6 +164,7 @@ public class EdgeEffectUtil {
             if( !mTopEffect.isFinished() ) {
                   mTopEffect.onRelease();
                   mView.invalidate();
+                  isReleased = true;
             }
       }
 
@@ -175,6 +173,7 @@ public class EdgeEffectUtil {
             if( !mRightEffect.isFinished() ) {
                   mRightEffect.onRelease();
                   mView.invalidate();
+                  isReleased = true;
             }
       }
 
@@ -183,6 +182,7 @@ public class EdgeEffectUtil {
             if( !mBottomEffect.isFinished() ) {
                   mBottomEffect.onRelease();
                   mView.invalidate();
+                  isReleased = true;
             }
       }
 
