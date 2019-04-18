@@ -1,7 +1,7 @@
 ## 辅助制造EdgeEffect效果
 
 ```
-implementation 'tech.threekilogram:edgeeffectutil:2.0.0'
+implementation 'tech.liujin:edgeeffectutil:1.0.0'
 ```
 
 
