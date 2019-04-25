@@ -1,4 +1,4 @@
-package tech.threekilogram.edgeeffectlib;
+package tech.liujin.edgeeffectlib;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -7,12 +7,12 @@ import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.FrameLayout;
-import tech.threekilogram.edgeeffect.BaseEdgeEffect;
-import tech.threekilogram.edgeeffect.BottomEffect;
-import tech.threekilogram.edgeeffect.EdgeEffectUtil;
-import tech.threekilogram.edgeeffect.LeftEffect;
-import tech.threekilogram.edgeeffect.RightEffect;
-import tech.threekilogram.edgeeffect.TopEffect;
+import tech.liujin.edge.BaseEdgeEffect;
+import tech.liujin.edge.BottomEffect;
+import tech.liujin.edge.EdgeEffectUtil;
+import tech.liujin.edge.LeftEffect;
+import tech.liujin.edge.RightEffect;
+import tech.liujin.edge.TopEffect;
 
 /**
  * @author Liujin 2018-10-11:9:56

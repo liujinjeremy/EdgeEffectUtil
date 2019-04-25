@@ -1,4 +1,4 @@
-package tech.threekilogram.edgeeffectlib;
+package tech.liujin.edgeeffectlib;
 
 import static org.junit.Assert.assertEquals;
 

@@ -1,4 +1,4 @@
-package tech.threekilogram.edgeeffect;
+package tech.liujin.edge;
 
 import android.content.Context;
 import android.graphics.Canvas;
