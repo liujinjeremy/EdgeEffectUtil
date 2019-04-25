@@ -1,7 +1,7 @@
 ## 辅助制造EdgeEffect效果
 
 ```
-implementation 'tech.liujin:edgeeffectutil:1.0.0'
+implementation 'tech.liujin:edgeEffectUtil:1.0.1'
 ```
 
 
